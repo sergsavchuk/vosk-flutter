@@ -48,3 +48,6 @@ flutter:
       linux:
         pluginClass: VoskFlutterPlugin
         ffiPlugin: true
+      windows:
+        pluginClass: VoskFlutterPlugin
+        ffiPlugin: true
