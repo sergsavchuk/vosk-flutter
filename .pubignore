@@ -8,7 +8,6 @@ _flutter/
 
 example/assets/models/
 
-*/libs/**
-!*/libs/.keepme
+*/libs/
 
 vosk-api/
