@@ -45,7 +45,7 @@ set(vosk_flutter_bundled_libraries
   PARENT_SCOPE
 )
 
-message ("FLUTTER_ROOT is $ENV{FLUTTER_ROOT}")
+#message ("FLUTTER_ROOT is $ENV{FLUTTER_ROOT}")
 
 # Install VOSK binaries.
 execute_process(COMMAND "$ENV{FLUTTER_ROOT}\\bin\\flutter.bat" "pub" "run" "vosk_flutter" "install" "-t" "windows"
