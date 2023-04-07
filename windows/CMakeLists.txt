@@ -12,12 +12,6 @@ project(${PROJECT_NAME} LANGUAGES CXX)
 # not be changed
 set(PLUGIN_NAME "vosk_flutter_plugin")
 
-# Any new source files that you add to the plugin should be added here.
-#list(APPEND PLUGIN_SOURCES
-#  "vosk_flutter_plugin.cpp"
-#  "vosk_flutter_plugin.h"
-#)
-
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED "vosk_flutter_plugin.cpp")
@@ -44,6 +38,20 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
 set(vosk_flutter_bundled_libraries
-  ""
+  "${CMAKE_CURRENT_SOURCE_DIR}/libs/libvosk.dll"
+  "${CMAKE_CURRENT_SOURCE_DIR}/libs/libgcc_s_seh-1.dll"
+  "${CMAKE_CURRENT_SOURCE_DIR}/libs/libstdc++-6.dll"
+  "${CMAKE_CURRENT_SOURCE_DIR}/libs/libwinpthread-1.dll"
   PARENT_SCOPE
 )
+
+message ("FLUTTER_ROOT is $ENV{FLUTTER_ROOT}")
+
+# Install VOSK binaries.
+execute_process(COMMAND "$ENV{FLUTTER_ROOT}\\bin\\flutter.bat" "pub" "run" "vosk_flutter" "install" "-t" "windows"
+        OUTPUT_VARIABLE output
+        RESULT_VARIABLE result
+        COMMAND_ERROR_IS_FATAL ANY
+        )
+message(STATUS "cmd output: ${output}")
+message(STATUS "cmd result: ${result}")

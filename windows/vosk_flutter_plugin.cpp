@@ -15,6 +15,25 @@
 
 namespace vosk_flutter {
 
+class VoskFlutterPlugin : public flutter::Plugin {
+ public:
+  static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
+
+  VoskFlutterPlugin();
+
+  virtual ~VoskFlutterPlugin();
+
+  // Disallow copy and assign.
+  VoskFlutterPlugin(const VoskFlutterPlugin&) = delete;
+  VoskFlutterPlugin& operator=(const VoskFlutterPlugin&) = delete;
+
+ private:
+  // Called when a method is called on this plugin's channel from Dart.
+  void HandleMethodCall(
+      const flutter::MethodCall<flutter::EncodableValue> &method_call,
+      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
+};
+
 // static
 void VoskFlutterPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
