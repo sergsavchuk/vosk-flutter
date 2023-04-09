@@ -26,7 +26,6 @@ flutter:
     - assets/models/
 
 ```
-From the network:
 ```dart
 final vosk = VoskFlutterPlugin.instance();
 final enSmallModelPath = await ModelLoader()
