@@ -1,4 +1,4 @@
-name: vosk_flutter
+name: android_integration
 
 on:
   workflow_dispatch:
